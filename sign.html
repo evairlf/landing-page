@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
+    </link>
+    <title>Landing Page</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <img class="linux-img" src="./utils/images/linux-svgrepo-com.svg" alt="">
+        <div class="texto">Distros Linux</div>
+    </header>
+
+    <nav id="menu">
+        <ul>
+            <li>
+                <a href="./index.html">Inicio</a>
+            </li>
+            <li>
+                <a href="about.html">sobre nós</a>
+            </li>
+            <li>
+                <a href="sign.html">inscreva-se</a>
+            </li>
+        </ul>
+    </nav>
+<div class="form-content">
+    <div class="form">
+        <h2>Formulário de Feedback/Inscrição</h2>
+        <form id="feedback-form">
+          <div>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div>
+            <label for="message">Mensagem:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" id="submit-btn">Enviar</button>
+        </form>
+      
+        <div id="feedback-message" style="display: none; margin-top: 10px;">
+          <p>Obrigado pelo seu feedback!</p>
+        </div>
+      </div>
+</div>
+    
+             
+
+    <footer class="footer">
+        <p>&copy; Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+<script>
+    document.getElementById('feedback-form').addEventListener('submit', function(event) {
+      event.preventDefault(); // Nao deixa o formulario ir vazio
+    
+      // Faz a imagem aparecer na tela
+      document.getElementById('feedback-message').style.display = 'block';
+    
+      // da um clear no formulario
+      document.getElementById('feedback-form').reset();
+    });
+    </script>
+</html>
