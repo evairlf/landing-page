@@ -64,7 +64,7 @@ form {
   }
 
   button {
-    width: 100%; /* Botão ocupa toda a largura do container */
+    width: 100%;
     padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
@@ -137,29 +137,28 @@ form {
     padding-right: 10px;
     white-space: nowrap;
     overflow: hidden;
-    text-align: center;
-    animation: digitar 5s steps(40, end);
+    animation: digit 5s steps(40, end);
 }
 
 /* Cursor piscando */
 .texto::after {
     content: '|';
-    animation: piscar 1s infinite;
+    animation: flashing 1s infinite;
 }
 
 /* Animação de digitação */
-@keyframes digitar {
+@keyframes digit {
     from {
         width: 0;
     }
 
     to {
-        width: 100%;
+        width: 80%;
     }
 }
 
 /* Animação do cursor */
-@keyframes piscar {
+@keyframes flashing {
 
     0%,
     100% {
@@ -218,23 +217,22 @@ form {
     object-fit: cover;
 }
 
-/* Mostra o slide ativo */
+
 .carousel input[name="slide-selector"]:checked~.slides .slide {
     opacity: 0;
-    /* Esconde todos os slides */
+  
 }
 
 .carousel input[name="slide-selector"]:nth-of-type(1):checked~.slides .slide:nth-of-type(1),
 .carousel input[name="slide-selector"]:nth-of-type(2):checked~.slides .slide:nth-of-type(2),
 .carousel input[name="slide-selector"]:nth-of-type(3):checked~.slides .slide:nth-of-type(3) {
     opacity: 1;
-    /* Mostra o slide correspondente ao input selecionado */
 }
 
-/* Botões de controle */
+
 .carousel input[name="slide-selector"] {
     display: none;
-    /* Esconde os inputs */
+   
 }
 
 .carousel label {
@@ -258,7 +256,7 @@ form {
     color: #fff;
 }
 
-/* Controles para navegação */
+
 .controls {
     position: absolute;
     top: 50%;
@@ -312,23 +310,20 @@ form {
     object-fit: cover;
 }
 
-/* Mostra o slide ativo */
+
 .carousel-garuda input[name="slide-selector-garuda"]:checked~.slides-garuda .slide-garuda {
     opacity: 0;
-    /* Esconde todos os slides */
 }
 
 .carousel-garuda input[name="slide-selector-garuda"]:nth-of-type(1):checked~.slides-garuda .slide-garuda:nth-of-type(1),
 .carousel-garuda input[name="slide-selector-garuda"]:nth-of-type(2):checked~.slides-garuda .slide-garuda:nth-of-type(2),
 .carousel-garuda input[name="slide-selector-garuda"]:nth-of-type(3):checked~.slides-garuda .slide-garuda:nth-of-type(3) {
     opacity: 1;
-    /* Mostra o slide correspondente ao input selecionado */
 }
 
-/* Botões de controle */
 .carousel-garuda input[name="slide-selector-garuda"] {
     display: none;
-    /* Esconde os inputs */
+    
 }
 
 .carousel-garuda label {
@@ -352,7 +347,7 @@ form {
     color: #fff;
 }
 
-/* Controles para navegação */
+
 .controls-garuda {
     position: absolute;
     top: 50%;
@@ -377,7 +372,7 @@ form {
     background-color: #555;
 }
 
-/* Carrossel parrot */
+
 
 
 .carousel-parrot {
@@ -406,23 +401,23 @@ form {
     object-fit: cover;
 }
 
-/* Mostra o slide ativo */
+
 .carousel-parrot input[name="slide-selector-parrot"]:checked~.slides-parrot .slide-parrot {
     opacity: 0;
-    /* Esconde todos os slides */
+
 }
 
 .carousel-parrot input[name="slide-selector-parrot"]:nth-of-type(1):checked~.slides-parrot .slide-parrot:nth-of-type(1),
 .carousel-parrot input[name="slide-selector-parrot"]:nth-of-type(2):checked~.slides-parrot .slide-parrot:nth-of-type(2),
 .carousel-parrot input[name="slide-selector-parrot"]:nth-of-type(3):checked~.slides-parrot .slide-parrot:nth-of-type(3) {
     opacity: 1;
-    /* Mostra o slide correspondente ao input selecionado */
+
 }
 
-/* Botões de controle */
+
 .carousel-parrot input[name="slide-selector-parrot"] {
     display: none;
-    /* Esconde os inputs */
+
 }
 
 .carousel-parrot label {
@@ -446,7 +441,7 @@ form {
     color: #fff;
 }
 
-/* Controles para navegação */
+
 .controls-parrot {
     position: absolute;
     top: 50%;
