@@ -16,14 +16,6 @@ body {
     text-align: center;
 }
 
-.linux-img {
-    position: absolute; /* Absolute position to place the image relative to the header */
-    top: 0.3rem; /* Distance from the top edge */
-    left: 5%; /* Distance from the left edge */
-    width: 100px; /* Width of the image */
-    height: auto; /* Maintain aspect ratio */
-}
-
 /* Optional styling for header text */
 .header h1 {
     margin: 0;
@@ -202,6 +194,11 @@ button:hover {
     width: 10%;
     margin-right: 10px;
     max-width: 165px;
+    position: absolute; /* Absolute position to place the image relative to the header */
+    top: 0.3rem; /* Distance from the top edge */
+    left: 5%; /* Distance from the left edge */ /* Width of the image */
+    height: auto; /* Maintain aspect ratio */
+    min-width: 75px;
 }
 
 .distro-img {
