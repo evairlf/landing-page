@@ -201,6 +201,7 @@ button:hover {
 .header>.linux-img {
     width: 10%;
     margin-right: 10px;
+    max-width: 165px;
 }
 
 .distro-img {
