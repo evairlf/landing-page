@@ -30,48 +30,79 @@
       </ul>
   </nav>
 
-  
-<div class="form-content">
-    <div class="form">
-        <h2>Formulário de Feedback/Inscrição</h2>
-        <form id="feedback-form">
-          <div>
-            <label for="name">Nome:</label>
-            <input type="text" id="name" name="name" required>
-          </div>
-          <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-          </div>
-          <div>
-            <label for="message">Mensagem:</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-          </div>
-          <button type="submit" id="submit-btn">Enviar</button>
-        </form>
-      
-        <div id="feedback-message" style="display: none; margin-top: 10px;">
-          <p style="color: black;">Obrigado pelo seu feedback!</p>
+    <div class="form-content">
+        <div class="form">
+            <h2>Formulário de Feedback/Inscrição</h2>
+            <form id="feedback-form">
+                <div>
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" id="submit-btn">Enviar</button>
+            </form>
+        
+            <div id="feedback-message" style="display: none;">
+                <p>Obrigado pelo seu feedback!</p>
+            </div>
         </div>
-      </div>
-</div>
-    
-             
+    </div>
 
     <footer class="footer">
         <p>&copy; Todos os direitos reservados.</p>
     </footer>
 
-</body>
-<script>
-    document.getElementById('feedback-form').addEventListener('submit', function(event) {
-      event.preventDefault(); // Nao deixa o formulario ir vazio
-    
-      // Faz a imagem aparecer na tela
-      document.getElementById('feedback-message').style.display = 'block';
-    
-      // da um clear no formulario
-      document.getElementById('feedback-form').reset();
-    });
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const storedData = localStorage.getItem('feedbackFormData');
+            if (storedData) {
+                const data = JSON.parse(storedData);
+                document.getElementById('name').value = data.name || '';
+                document.getElementById('email').value = data.email || '';
+                document.getElementById('message').value = data.message || '';
+            }
+        });
+
+        document.getElementById('feedback-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            // Converte o formulário para um objeto JSON
+            const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach((value, key) => formObject[key] = value);
+
+            // Salva os dados no localStorage
+            localStorage.setItem('feedbackFormData', JSON.stringify(formObject));
+
+            // Envia os dados como JSON
+            fetch('https://run.mocky.io/v3/15fd107d-4b07-42aa-856f-a3a78e28055b', {
+                method: 'POST',
+                body: JSON.stringify(formObject)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json(); // Tenta converter a resposta para JSON
+            })
+            .then(data => {
+                console.log('Success:', data);
+                document.getElementById('feedback-message').style.display = 'block';
+                document.getElementById('feedback-form').reset();
+                localStorage.removeItem('feedbackFormData');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Ocorreu um erro ao enviar seu feedback. Tente novamente mais tarde.');
+            });
+        });
     </script>
+</body>
 </html>
