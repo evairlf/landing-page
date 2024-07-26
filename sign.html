@@ -32,7 +32,7 @@
 
     <div class="form-content">
         <div class="form">
-            <h2>Formulário de Feedback/Inscrição</h2>
+            <h2 style="color: black;;">Formulário de Feedback/Inscrição</h2>
             <form id="feedback-form">
                 <div>
                     <label for="name">Nome:</label>
@@ -73,6 +73,9 @@
         document.getElementById('feedback-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Impede o envio padrão do formulário
 
+            //Deleta do local storage se houver algum formulario salvo antes de salvar outro formulario
+            if(localStorage.getItem('feedbackFormData')) localStorage.removeItem('feedbackFormData');
+
             // Converte o formulário para um objeto JSON
             const formData = new FormData(this);
             const formObject = {};
@@ -96,7 +99,6 @@
                 console.log('Success:', data);
                 document.getElementById('feedback-message').style.display = 'block';
                 document.getElementById('feedback-form').reset();
-                localStorage.removeItem('feedbackFormData');
             })
             .catch(error => {
                 console.error('Error:', error);
